@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+
 import axios from 'axios';
 
 const App = () => {
@@ -35,7 +35,6 @@ const App = () => {
 
 console.log(recipient,body,subject)
 
-
 const sendEmail = async (e) => {
   e.preventDefault();
 
@@ -51,27 +50,18 @@ const sendEmail = async (e) => {
   };
 
   try {
-    const response = await fetch("http://localhost:4000/api/send-notification", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(templateParams),
-    });
+    const response = await axios.post("http://localhost:4000/api/send-notification", templateParams);
 
-    const data = await response.json();
-
-    if (response.ok) {
-      alert(data.message || "Notification sent successfully!");
+    if (response.status === 200) {
+      alert(response.data.message || "Notification sent successfully!");
     } else {
-      alert(data.error || "Failed to send email. Please try again.");
+      alert(response.data.error || "Failed to send email. Please try again.");
     }
   } catch (error) {
     console.error("Error sending notification:", error);
     alert("Failed to send email. Please try again.");
   }
 };
-
 
 
   return (
