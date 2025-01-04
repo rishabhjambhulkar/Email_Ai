@@ -2,6 +2,11 @@ import React, { useState } from "react";
 
 import axios from 'axios';
 
+const baseURL =
+  window.location.hostname === "https://email-ai-nu.vercel.app/"
+    ? "https://email-ai-xqeg.onrender.com" // Production API URL
+    : "http://localhost:4000"; // Development API URL
+
 const App = () => {
   const [recipient, setRecipient] = useState("");
   const [subject, setSubject] = useState("Fast Language Models");
@@ -19,7 +24,7 @@ const App = () => {
   
     try {
       // API call using Axios
-      const response = await axios.post("http://localhost:4000/api/groq-response", {
+      const response = await axios.post(`${baseURL}/api/groq-response`, {
         prompt, // Sending the prompt as the request body
       });
   
@@ -50,7 +55,7 @@ const sendEmail = async (e) => {
   };
 
   try {
-    const response = await axios.post("http://localhost:4000/api/send-notification", templateParams);
+    const response = await axios.post(`${baseURL}/api/send-notification`, templateParams);
 
     if (response.status === 200) {
       alert(response.data.message || "Notification sent successfully!");
