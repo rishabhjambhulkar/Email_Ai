@@ -37,6 +37,9 @@ app.use(cors({
 
 app.use('/', (req, res) => res.json({ message: 'server running emailAi' }));
 
+// API endpoint
+app.use('/api/', (req, res) => res.json({ message: 'API endpoint' }));
+
 // Route to fetch response from Groq
 app.post("/api/groq-response", async (req, res) => {
   console.log(req.body)
