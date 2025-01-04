@@ -2,8 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 // import dotenv from 'dotenv';
-import mongoose from 'mongoose';
-import User from './models/User.js'; // Import User model
+
 import bodyParser from "body-parser";
 import Groq from "groq-sdk";
 import dotenv from 'dotenv';
