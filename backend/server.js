@@ -11,15 +11,7 @@ import nodemailer from 'nodemailer';
 // Load environment variables from .env file
 dotenv.config();
 
-// MongoDB Connection
-mongoose
-  .connect('mongodb://127.0.0.1:27017/userbio')
-  .then(() => {
-    console.log('Connected to DB1');
-  })
-  .catch((err) => {
-    console.error('Database connection error:', err);
-  });
+
 
 const app = express();
 const PORT =  4000;
@@ -44,6 +36,7 @@ app.use(cors({
   credentials: true // Allow cookies if needed
 }));
 
+app.use('/', (req, res) => res.json({ message: 'server running emailAi' }));
 
 // Route to fetch response from Groq
 app.post("/api/groq-response", async (req, res) => {
