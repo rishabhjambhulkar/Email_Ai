@@ -30,15 +30,15 @@ app.use(bodyParser.json());
 
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your React frontend's URL
+  origin: '*', // Replace with your React frontend's URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
   credentials: true // Allow cookies if needed
 }));
 
-app.use('/', (req, res) => res.json({ message: 'server running emailAi' }));
+// app.use('/', (req, res) => res.json({ message: 'server running emailAi' }));
 
 // API endpoint
-app.use('/api/', (req, res) => res.json({ message: 'API endpoint' }));
+// app.use('/api/', (req, res) => res.json({ message: 'API endpoint' }));
 
 // Route to fetch response from Groq
 app.post("/api/groq-response", async (req, res) => {
