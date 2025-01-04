@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import axios from 'axios';
 
 const baseURL =
-  window.location.hostname === "https://email-4isg5etoz-rishabh-jambhulkars-projects.vercel.app/"
-    ? "https://email-ai-xqeg.onrender.com" // Production API URL
-    : "http://localhost:4000"; // Development API URL
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_PROD_SERVER
+    : process.env.REACT_APP_DEV_SERVER;
+
+
 
 const App = () => {
   const [recipient, setRecipient] = useState("");
