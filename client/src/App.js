@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 
 const baseURL =
-  window.location.hostname === "https://email-ai-nu.vercel.app/"
+  window.location.hostname === "https://email-4isg5etoz-rishabh-jambhulkars-projects.vercel.app/"
     ? "https://email-ai-xqeg.onrender.com" // Production API URL
     : "http://localhost:4000"; // Development API URL
 
